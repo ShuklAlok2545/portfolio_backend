@@ -22,10 +22,7 @@ app.use(cors({
 
 app.use(express.json());
 
-connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+connect(MONGODB_URI)
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log('MongoDB connection error:', err));
 
