@@ -12,10 +12,24 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+const allowedOrigins = [
+  'https://silly-dasik-6f3544.netlify.app',
+  'https://portfolio-frontend-av9e.vercel.app'
+];
+
 app.use(cors({
-    origin: 'http://127.0.0.1:5501',
+   origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type'],
+    credentials: true
   }));
 
   app.options('/api/contact', cors());
