@@ -8,7 +8,6 @@ dotenv.config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-// Define your MongoDB connection string here (replace with your actual URI)
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -20,7 +19,7 @@ app.use(cors({
   }));
 
   app.options('/api/contact', cors());
-  
+
 app.use(express.json());
 
 connect(MONGODB_URI, {
@@ -55,19 +54,5 @@ app.post('/api/contact', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
-// import express from 'express';
-
-// const app = express();
-// const PORT = 4000;
-
-// app.get('/', (req, res) => {
-//   res.send('Server is running');
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
 
 
