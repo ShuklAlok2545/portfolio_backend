@@ -13,7 +13,8 @@ const PORT = process.env.PORT || 4000;
 
 const allowedOrigins = [
   'https://shuklalok2545-portfolio.netlify.app',
-  'https://portfolio-frontend-av9e.vercel.app'
+  'https://portfolio-frontend-av9e.vercel.app',
+  'https://shuklalokportfolio.netlify.app/'
 ];
 
 app.use(cors({
